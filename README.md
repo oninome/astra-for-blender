@@ -4,7 +4,7 @@ A Blender 5.2 add-on that connects the Codex CLI (GPT-6 Astra, where available) 
 
 ## Version
 
-**v0.12.2 — Stop Recovery Hotfix.** Source code is in [astra_for_blender](astra_for_blender/). This repository is currently private.
+**v0.12.2 — Stop Recovery Hotfix.** Source code is in [astra_for_blender](astra_for_blender/). The source is licensed under MIT. Download the versioned source archive from GitHub Releases when available.
 
 ## Installation
 
@@ -32,4 +32,4 @@ If Codex reports **Couldn't connect to Blender**, ensure the Blender MCP add-on 
 
 ## License
 
-**Not yet licensed for public redistribution.** A license will be selected before any public release.
+MIT — see [LICENSE](LICENSE).
