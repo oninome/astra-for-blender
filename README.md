@@ -1,26 +1,35 @@
 # Astra for Blender
 
-Blender 5.2 add-on connecting Codex (GPT-6 Astra) with Blender via the [MCP for Blender](https://github.com/ahujasid/mcp-for-blender) bridge.
+A Blender 5.2 add-on that connects the Codex CLI (GPT-6 Astra, where available) to Blender through [MCP for Blender](https://github.com/ahujasid/mcp-for-blender).
 
-## Status
+## Version
 
-Latest local build: **v0.12.2 (Stop Recovery Hotfix)**. Source files are being prepared for publication; this repository currently contains documentation only.
+**v0.12.2 — Stop Recovery Hotfix.** Source code is in [astra_for_blender](astra_for_blender/). This repository is currently private.
 
-## Setup
+## Installation
 
-1. Install Blender 5.2 and Codex CLI, and sign in to Codex.
-2. Install Blender MCP with `uvx mcp-for-blender install-addon`.
-3. Enable **Interface: MCP for Blender** in Blender and click **Start MCP Server** (default port 9876).
-4. Install Astra for Blender from the release ZIP and enable it.
-5. Configure the Codex executable path and a dedicated workspace, and use `gpt-6-astra` where available.
-6. Leave **Full auto** disabled. Confirm MCP access only for trusted scenes and tools.
+1. Install Blender 5.2, the Codex CLI, and `uvx`. Sign in to Codex.
+2. Run `uvx mcp-for-blender install-addon` once. In Blender, enable **Interface: MCP for Blender** and select **Start MCP Server** (typically port 9876).
+3. Download the versioned ZIP from this repository (or a release, once published). Install it via Blender's **Install from Disk**.
+4. In Astra preferences, set your own Codex executable path and **your own dedicated workspace directory**. No machine-specific path is supplied by this project.
+5. Set the model to `gpt-6-astra` if available to your Codex account. Leave **Full auto** disabled.
+6. Open the Astra tab in the 3D View sidebar, click **Check Codex**, and test with a read-only prompt.
 
-> Do not commit personal Blender projects, prompt history, local absolute paths, credentials, or API tokens.
+## Safety and privacy
 
-## Current limitations
+The add-on runs Codex locally and can invoke Blender MCP tools capable of editing a scene. The MCP approval bridge can auto-accept certain empty-form requests from the server named `blender`; review the source and use only in trusted environments. Never commit secrets, personal file paths, private .blend files, or prompt history.
 
-Astra requires a running Blender MCP add-on. If Codex reports that MCP cannot connect to Blender, check the MCP panel and its socket listener first.
+## Troubleshooting
+
+If Codex reports **Couldn't connect to Blender**, ensure the Blender MCP add-on is enabled and its server is started. The Codex CLI and Blender MCP are separate dependencies.
+
+## Source layout
+
+- `astra_for_blender/__init__.py` — add-on registration and settings.
+- `astra_for_blender/bridge.py` — Codex app-server / MCP bridge.
+- `astra_for_blender/operators.py` — Blender actions and task lifecycle.
+- `astra_for_blender/ui.py` — sidebar interface.
 
 ## License
 
-License not yet selected.
+**Not yet licensed for public redistribution.** A license will be selected before any public release.
